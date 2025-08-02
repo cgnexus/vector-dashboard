@@ -215,4 +215,50 @@ export function NeonChart({
   );
 }
 
-/* Simple performance metrics chart */\nexport function PerformanceChart({ className }: { className?: string }) {\n  const data = [\n    { time: \"00:00\", value: 245 },\n    { time: \"04:00\", value: 312 },\n    { time: \"08:00\", value: 189 },\n    { time: \"12:00\", value: 423 },\n    { time: \"16:00\", value: 367 },\n    { time: \"20:00\", value: 298 },\n    { time: \"24:00\", value: 334 }\n  ];\n\n  return (\n    <NeonChart\n      data={data}\n      title=\"Response Time (24h)\"\n      color=\"cyan\"\n      height={180}\n      type=\"area\"\n      className={className}\n    />\n  );\n}\n\n/* Cost trend chart */\nexport function CostChart({ className }: { className?: string }) {\n  const data = [\n    { time: \"Week 1\", value: 45 },\n    { time: \"Week 2\", value: 67 },\n    { time: \"Week 3\", value: 89 },\n    { time: \"Week 4\", value: 78 },\n    { time: \"Week 5\", value: 92 },\n    { time: \"Week 6\", value: 105 },\n    { time: \"Week 7\", value: 98 }\n  ];\n\n  return (\n    <NeonChart\n      data={data}\n      title=\"Weekly Costs ($)\"\n      color=\"purple\"\n      height={180}\n      type=\"line\"\n      className={className}\n    />\n  );\n}"
+/* Simple performance metrics chart */
+export function PerformanceChart({ className }: { className?: string }) {
+  const data = [
+    { time: "00:00", value: 245 },
+    { time: "04:00", value: 312 },
+    { time: "08:00", value: 189 },
+    { time: "12:00", value: 423 },
+    { time: "16:00", value: 367 },
+    { time: "20:00", value: 298 },
+    { time: "24:00", value: 334 }
+  ];
+
+  return (
+    <NeonChart
+      data={data}
+      title="Response Time (24h)"
+      color="cyan"
+      height={180}
+      type="area"
+      className={className}
+    />
+  );
+}
+
+/* Cost trend chart */
+export function CostChart({ className }: { className?: string }) {
+  const data = [
+    { time: "Week 1", value: 45 },
+    { time: "Week 2", value: 67 },
+    { time: "Week 3", value: 89 },
+    { time: "Week 4", value: 78 },
+    { time: "Week 5", value: 92 },
+    { time: "Week 6", value: 105 },
+    { time: "Week 7", value: 98 }
+  ];
+
+  return (
+    <NeonChart
+      data={data}
+      title="Weekly Costs ($)"
+      color="purple"
+      height={180}
+      type="line"
+      className={className}
+    />
+  );
+}
