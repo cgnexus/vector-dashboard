@@ -177,8 +177,9 @@ export async function GET(request: NextRequest) {
   }
 
 /**
- * Format anomaly values for display
+ * Format anomaly values for display (currently unused but available for future use)
  */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function formatAnomalyValue(anomaly: { type: string; value: number }): string {
     switch (anomaly.type) {
       case 'cost_spike':

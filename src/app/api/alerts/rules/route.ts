@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
-import { AlertRulesService, type CreateRuleData, type RuleConditions } from '@/lib/services/alert-rules.service';
+import { AlertRulesService, type CreateRuleData } from '@/lib/services/alert-rules.service';
 import { z } from 'zod';
 
 // Validation schemas

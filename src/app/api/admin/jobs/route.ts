@@ -1,11 +1,11 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { JobManager } from '@/lib/jobs/cleanup.job';
 import { AlertEvaluationJob } from '@/lib/jobs/alert-evaluation.job';
 import { NotificationDeliveryJob } from '@/lib/jobs/notification-delivery.job';
 
 // GET /api/admin/jobs - Get job status
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const session = await auth();
     if (!session?.user?.id) {

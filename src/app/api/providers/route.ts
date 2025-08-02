@@ -5,8 +5,6 @@ import {
   createResponse, 
   createErrorResponse, 
   createValidationErrorResponse,
-  getPaginationParams,
-  getFilterParams,
   ErrorCodes
 } from '@/lib/api-utils';
 import { auth } from '@/lib/auth';

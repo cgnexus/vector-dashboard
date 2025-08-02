@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { NotificationsService, type CreateChannelData } from '@/lib/services/notifications.service';
 import { z } from 'zod';
@@ -34,7 +34,7 @@ const createChannelSchema = z.object({
 });
 
 // GET /api/notifications/channels - List user's notification channels
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const session = await auth();
     if (!session?.user?.id) {
