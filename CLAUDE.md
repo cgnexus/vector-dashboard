@@ -97,3 +97,10 @@ DATABASE_URL=postgresql://user:password@localhost:5432/database
    - Follow existing code patterns in the codebase
    - Import components using `@/` alias
    - Run database migrations before starting development
+
+## Validation
+
+- **Use Zod for validation** throughout the project
+  - Provides type-safe schema validation
+  - Integrate with TypeScript for runtime and compile-time checks
+  - Useful for form inputs, API request/response validation
