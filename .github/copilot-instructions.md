@@ -2,7 +2,7 @@
 
 <!-- Use this file to provide workspace-specific custom instructions to Copilot. For more details, visit https://code.visualstudio.com/docs/copilot/copilot-customization#_use-a-githubcopilotinstructionsmd-file -->
 
-This is a Next.js 15 project with TypeScript, Tailwind CSS, and App Router. When working on this project:
+This is a Next.js 15 project with TypeScript, Tailwind CSS, shadcn/ui, and App Router. When working on this project:
 
 ## Framework & Architecture
 
@@ -11,17 +11,39 @@ This is a Next.js 15 project with TypeScript, Tailwind CSS, and App Router. When
 - Leverage React Server Components when appropriate
 - Use Client Components (`'use client'`) only when necessary for interactivity
 
+## Package Management
+
+- **Use pnpm** as the package manager (configured in package.json)
+- Use `pnpm add` instead of `npm install` for adding dependencies
+- Use `pnpm dlx shadcn@latest add <component>` to add new shadcn/ui components
+- Prefer `pnpm` commands in all documentation and examples
+
 ## Styling & UI
 
-- Use Tailwind CSS for styling with utility classes
+- **Primary**: Use shadcn/ui components for UI elements (located in `@/components/ui`)
+- **Secondary**: Use Tailwind CSS for custom styling with utility classes
+- Follow the shadcn/ui design system and component patterns
+- Use the "new-york" style variant (configured in components.json)
 - Follow responsive design principles (mobile-first approach)
-- Maintain consistent design patterns and component structure
-- Use CSS modules or styled-components only when Tailwind is insufficient
+- Maintain consistent design patterns with shadcn/ui components
+- Use CSS modules or styled-components only when shadcn/ui and Tailwind are insufficient
+
+## shadcn/ui Guidelines
+
+- Import components from `@/components/ui` using the configured aliases
+- Use existing shadcn/ui components: button, card, input, label, dialog, dropdown-menu, badge
+- Follow shadcn/ui composition patterns for building complex components
+- Leverage built-in variants and styling props provided by shadcn/ui components
+- Use Lucide React icons (configured as the icon library)
+- When adding new components, use: `pnpm dlx shadcn@latest add <component-name>`
 
 ## Code Organization
 
-- Keep components in the `src/components` directory
-- Use the `src/app` directory for routing and page components
+- Keep reusable components in the `src/components` directory
+- Place shadcn/ui components in `src/components/ui` (auto-generated)
+- Use the `src/app` directory for routing and page components  
+- Store utilities in `src/lib` directory
+- Use configured path aliases: `@/components`, `@/lib`, `@/hooks`
 - Implement proper error boundaries and loading states
 - Follow the convention of co-locating related files
 
@@ -32,6 +54,8 @@ This is a Next.js 15 project with TypeScript, Tailwind CSS, and App Router. When
 - Implement proper error handling and validation
 - Follow Next.js performance best practices
 - Use ESLint configuration for code quality
+- Use pnpm for all package management operations
+- Follow shadcn/ui component composition patterns
 
 ## API & Data Fetching
 
@@ -39,6 +63,7 @@ This is a Next.js 15 project with TypeScript, Tailwind CSS, and App Router. When
 - Implement proper loading and error states
 - Use Server Actions for form handling when appropriate
 - Follow RESTful API design principles
+- Use shadcn/ui components for form elements and loading states
 
 ## Testing & Quality
 
@@ -46,3 +71,12 @@ This is a Next.js 15 project with TypeScript, Tailwind CSS, and App Router. When
 - Use proper prop validation and TypeScript interfaces
 - Implement proper accessibility (a11y) practices
 - Follow semantic HTML structure
+- Test shadcn/ui component integrations
+
+## Component Development
+
+- Compose new components using existing shadcn/ui primitives
+- Follow the established component patterns in the project
+- Use proper TypeScript props interfaces
+- Implement proper forwarding of refs when needed
+- Document component APIs with JSDoc comments
