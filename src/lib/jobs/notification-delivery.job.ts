@@ -179,7 +179,7 @@ export class NotificationDeliveryJob {
   }
 
   // Process individual delivery
-  private static async processDelivery(delivery: any) {
+  private static async processDelivery(delivery: Record<string, unknown>) {
     const { alert, channel } = delivery;
     
     // Build notification context
@@ -195,7 +195,7 @@ export class NotificationDeliveryJob {
   }
 
   // Build notification variables (similar to NotificationsService)
-  private static async buildNotificationVariables(alert: any): Promise<Record<string, any>> {
+  private static async buildNotificationVariables(alert: Record<string, unknown>): Promise<Record<string, unknown>> {
     const dashboardUrl = process.env.NEXT_PUBLIC_BETTER_AUTH_URL || 'http://localhost:3000';
     
     return {
@@ -214,7 +214,7 @@ export class NotificationDeliveryJob {
   }
 
   // Mark delivery as successful
-  private static async markDeliverySuccess(deliveryId: string, response?: any): Promise<void> {
+  private static async markDeliverySuccess(deliveryId: string, response?: Record<string, unknown>): Promise<void> {
     await db
       .update(alertDeliveries)
       .set({

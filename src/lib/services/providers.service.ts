@@ -1,7 +1,7 @@
 import { db } from '@/db';
 import { apiProviders, apiKeys, apiMetrics, type ApiProvider } from '@/db/schema';
 import { and, eq, desc, count, sql } from 'drizzle-orm';
-import { withTransaction, type DbTransaction } from '@/lib/db-utils';
+import { withTransaction } from '@/lib/db-utils';
 import { generateId } from '@/lib/api-utils';
 
 export interface CreateProviderData {
@@ -316,7 +316,7 @@ export class ProvidersService {
     providerId: string,
     userId?: string
   ): Promise<ProviderWithStats['stats']> {
-    const last30Days = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+    // const last30Days = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
 
     // Get API key stats
     const keyConditions = [eq(apiKeys.providerId, providerId)];

@@ -4,7 +4,7 @@ import { initializeBackgroundJobs } from './jobs';
 // Configuration for different environments
 const getJobConfig = () => {
   const isDev = process.env.NODE_ENV === 'development';
-  const isProd = process.env.NODE_ENV === 'production';
+  // const isProd = process.env.NODE_ENV === 'production';
 
   return {
     alertEvaluationMinutes: isDev ? 2 : 1,      // Slower in dev

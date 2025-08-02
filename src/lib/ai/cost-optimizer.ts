@@ -733,8 +733,8 @@ export class CostOptimizer {
    */
   private static extractModelFromMetric(metric: ApiMetric): string {
     if (metric.metadata && typeof metric.metadata === 'object') {
-      const metadata = metric.metadata as any;
-      if (metadata.model) return metadata.model;
+      const metadata = metric.metadata as Record<string, unknown>;
+      if (metadata.model) return metadata.model as string;
     }
     
     // Extract from endpoint URL

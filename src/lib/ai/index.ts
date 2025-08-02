@@ -94,7 +94,7 @@ export class AIOrchestrator {
    */
   static async generateDashboardInsights(
     metrics: ApiMetric[],
-    userId: string
+    _userId: string
   ): Promise<DashboardInsights> {
     if (metrics.length === 0) {
       return this.getEmptyInsights();

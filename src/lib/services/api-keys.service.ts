@@ -1,7 +1,7 @@
 import { db } from '@/db';
 import { apiKeys, apiProviders, type ApiKey } from '@/db/schema';
 import { and, eq, desc, count, sql } from 'drizzle-orm';
-import { withTransaction, type DbTransaction } from '@/lib/db-utils';
+import { withTransaction } from '@/lib/db-utils';
 import { generateId, hashSensitiveData } from '@/lib/api-utils';
 
 export interface CreateApiKeyData {

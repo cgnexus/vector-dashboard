@@ -337,7 +337,7 @@ export class CostCalculator {
     });
 
     // Model downgrade recommendations
-    providerCosts.forEach((data, providerId) => {
+    providerCosts.forEach((data, _providerId) => {
       if (data.models.has('gpt-4') && data.cost > currentCost * 0.3) {
         recommendations.push({
           type: 'model_downgrade',
@@ -398,8 +398,8 @@ export class CostCalculator {
   private static extractModel(metric: ApiMetric): string {
     // Try to extract from metadata first
     if (metric.metadata && typeof metric.metadata === 'object') {
-      const metadata = metric.metadata as any;
-      if (metadata.model) return metadata.model;
+      const metadata = metric.metadata as Record<string, unknown>;
+      if (metadata.model) return metadata.model as string;
     }
 
     // Extract from endpoint

@@ -1,7 +1,7 @@
 import { db } from '@/db';
 import { alerts, apiProviders, costBudgets, apiMetrics, type Alert } from '@/db/schema';
 import { and, eq, desc, count, sql, gte, lte } from 'drizzle-orm';
-import { withTransaction, type DbTransaction } from '@/lib/db-utils';
+import { withTransaction } from '@/lib/db-utils';
 import { generateId } from '@/lib/api-utils';
 
 export interface CreateAlertData {
@@ -11,7 +11,7 @@ export interface CreateAlertData {
   severity: 'low' | 'medium' | 'high' | 'critical';
   title: string;
   message: string;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 export interface AlertsQuery {

@@ -1,7 +1,7 @@
 import { db } from '@/db';
 import { apiMetrics, apiKeys, apiProviders, type ApiMetric } from '@/db/schema';
 import { and, eq, desc, count, sql, gte, lte, between } from 'drizzle-orm';
-import { withTransaction, type DbTransaction } from '@/lib/db-utils';
+import { withTransaction } from '@/lib/db-utils';
 import { generateId } from '@/lib/api-utils';
 
 export interface CreateMetricData {
@@ -20,7 +20,7 @@ export interface CreateMetricData {
     output?: number;
     total?: number;
   };
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
   timestamp?: Date;
 }
 

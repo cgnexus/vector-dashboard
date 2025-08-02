@@ -187,7 +187,7 @@ export const useKonamiCode = (callback: () => void) => {
     'KeyB', 'KeyA'
   ];
   
-  const [sequence, setSequence] = React.useState<string[]>([]);
+  const [, setSequence] = React.useState<string[]>([]);
   
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
@@ -209,7 +209,7 @@ export const useKonamiCode = (callback: () => void) => {
     return () => {
       document.removeEventListener('keydown', handleKeyPress);
     };
-  }, [callback]);
+  }, [callback, konamiCode]);
 };
 
 // Random encouraging messages

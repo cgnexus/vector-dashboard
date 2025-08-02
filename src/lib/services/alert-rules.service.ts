@@ -1,15 +1,15 @@
 import { db } from '@/db';
 import { 
   alertRules, 
-  alerts,
+  // alerts,
   apiMetrics,
-  costBudgets,
+  // costBudgets,
   apiProviders,
   type AlertRule,
   type Alert
 } from '@/db/schema';
 import { and, eq, desc, count, sql, gte, lte, avg, sum } from 'drizzle-orm';
-import { withTransaction, type DbTransaction } from '@/lib/db-utils';
+import { withTransaction } from '@/lib/db-utils';
 import { generateId } from '@/lib/api-utils';
 import { AlertsService } from './alerts.service';
 
@@ -521,7 +521,7 @@ export class AlertRulesService {
   }
 
   // Generate alert title
-  private static generateAlertTitle(rule: AlertRule, currentValue: number): string {
+  private static generateAlertTitle(rule: AlertRule, _currentValue: number): string {
     const typeLabels = {
       error_rate: 'High Error Rate',
       slow_response: 'Slow Response Time',
@@ -578,7 +578,7 @@ export class AlertRulesService {
         lastTriggered: new Date(),
         triggerCount: sql`${alertRules.triggerCount} + 1`,
         updatedAt: new Date()
-      } as any)
+      })
       .where(eq(alertRules.id, ruleId));
   }
 

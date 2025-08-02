@@ -81,7 +81,7 @@ export function getJobStatus() {
 // Restart specific job
 export function restartJob(
   jobName: 'alertEvaluation' | 'notificationDelivery' | 'cleanup',
-  config?: any
+  config?: Record<string, unknown>
 ) {
   if (!jobsInitialized) {
     throw new Error('Background jobs not initialized');

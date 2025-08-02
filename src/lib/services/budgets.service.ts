@@ -1,7 +1,7 @@
 import { db } from '@/db';
 import { costBudgets, apiProviders, apiMetrics, type CostBudget } from '@/db/schema';
 import { and, eq, desc, count, sql, gte, lte } from 'drizzle-orm';
-import { withTransaction, type DbTransaction } from '@/lib/db-utils';
+import { withTransaction } from '@/lib/db-utils';
 import { generateId } from '@/lib/api-utils';
 
 export interface CreateBudgetData {
@@ -414,7 +414,7 @@ export class BudgetsService {
     const periodDuration = periodEnd.getTime() - periodStart.getTime();
     const elapsedTime = now.getTime() - periodStart.getTime();
     const remainingTime = periodEnd.getTime() - now.getTime();
-    const progressPercentage = Math.min(100, (elapsedTime / periodDuration) * 100);
+    // const progressPercentage = Math.min(100, (elapsedTime / periodDuration) * 100);
 
     // Get daily spending for trend analysis
     const dailySpending = await db.execute(sql`
@@ -489,7 +489,7 @@ export class BudgetsService {
   }
 
   // Calculate budget spending data
-  private static async calculateBudgetSpending(budget: any): Promise<{
+  private static async calculateBudgetSpending(budget: CostBudget): Promise<{
     currentSpending: number;
     spendingPercentage: number;
     remainingAmount: number;

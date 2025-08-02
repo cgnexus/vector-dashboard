@@ -266,7 +266,7 @@ export class JobManager {
   // Restart specific job
   static restartJob(
     jobName: 'alertEvaluation' | 'notificationDelivery' | 'cleanup',
-    config?: any
+    config?: Record<string, unknown>
   ): void {
     console.log(`Restarting ${jobName} job...`);
 
