@@ -287,4 +287,4 @@ export function useCommandPalette() {
       <CommandPalette {...props} open={open} onOpenChange={setOpen} />
     )
   };
-}"
+}
