@@ -1,24 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vector Dashboard
+
+A modern Next.js 15 dashboard application built with TypeScript, Tailwind CSS, and the App Router.
+
+## Features
+
+- ⚡ **Next.js 15** with App Router and Turbopack for fast development
+- 🔷 **TypeScript** for type safety and better developer experience
+- 🎨 **Tailwind CSS 4** for modern, responsive styling
+- 📱 **Responsive Design** with mobile-first approach
+- 🔧 **ESLint** for code quality and consistency
+- 🚀 **Optimized** for performance and SEO
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- npm, yarn, pnpm, or bun
+
+### Development
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The development server uses Turbopack for faster builds and hot reloading. The page auto-updates as you edit files.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Building for Production
+
+```bash
+npm run build
+npm start
+```
+
+## Project Structure
+
+```
+src/
+├── app/                # App Router pages and layouts
+│   ├── layout.tsx     # Root layout component
+│   ├── page.tsx       # Home page
+│   └── globals.css    # Global styles
+└── components/        # Reusable UI components (create as needed)
+```
+
+## VS Code Integration
+
+This project includes VS Code configurations for:
+
+- Debugging (server-side, client-side, and full-stack)
+- Tasks for common operations (dev, build, lint)
+- Extensions for TypeScript, Tailwind CSS, and ESLint
+- Custom settings for optimal development experience
+
+### Available Tasks
+
+Press `Ctrl+Shift+P` and search for "Tasks: Run Task" to access:
+
+- **Next.js Development Server** - Start development with hot reload
+- **Build Next.js Application** - Create production build
+- **Start Production Server** - Run production server
+- **Lint Code** - Run ESLint checks
+- **Install Dependencies** - Install npm packages
 
 ## Learn More
 
