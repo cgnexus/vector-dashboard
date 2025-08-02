@@ -1,6 +1,7 @@
 import { AlertsService } from '../services/alerts.service';
 import { AlertRulesService } from '../services/alert-rules.service';
 import { NotificationDeliveryJob } from './notification-delivery.job';
+import { AlertEvaluationJob, AutoAlertJob } from './alert-evaluation.job';
 
 export interface CleanupJobResult {
   success: boolean;
@@ -192,7 +193,7 @@ export class JobManager {
 
     // Start alert evaluation job
     if (!this.alertEvaluationInterval) {
-      const { AlertEvaluationJob } = require('./alert-evaluation.job');
+      // Using imported AlertEvaluationJob
       this.alertEvaluationInterval = AlertEvaluationJob.startScheduler(alertEvaluationMinutes);
     }
 
@@ -211,7 +212,7 @@ export class JobManager {
 
     // Start auto alert job (legacy support)
     if (!this.autoAlertInterval) {
-      const { AutoAlertJob } = require('./alert-evaluation.job');
+      // Using imported AutoAlertJob
       this.autoAlertInterval = AutoAlertJob.startScheduler(autoAlertMinutes);
     }
 
@@ -223,7 +224,7 @@ export class JobManager {
     console.log('Stopping all background jobs...');
 
     if (this.alertEvaluationInterval) {
-      const { AlertEvaluationJob } = require('./alert-evaluation.job');
+      // Using imported AlertEvaluationJob
       AlertEvaluationJob.stopScheduler(this.alertEvaluationInterval);
       this.alertEvaluationInterval = null;
     }
@@ -243,7 +244,7 @@ export class JobManager {
 
   // Get status of all jobs
   static getStatus() {
-    const { AlertEvaluationJob, AutoAlertJob } = require('./alert-evaluation.job');
+    // Using imported AlertEvaluationJob and AutoAlertJob
     
     return {
       alertEvaluation: AlertEvaluationJob.getStatus(),
@@ -272,7 +273,7 @@ export class JobManager {
     switch (jobName) {
       case 'alertEvaluation':
         if (this.alertEvaluationInterval) {
-          const { AlertEvaluationJob } = require('./alert-evaluation.job');
+          // Using imported AlertEvaluationJob
           AlertEvaluationJob.stopScheduler(this.alertEvaluationInterval);
           this.alertEvaluationInterval = AlertEvaluationJob.startScheduler(config?.intervalMinutes || 1);
         }

@@ -339,8 +339,8 @@ export class NotificationDeliveryJob {
     console.log('Retrying failed deliveries...');
 
     let deliveriesProcessed = 0;
-    let successfulDeliveries = 0;
-    let failedDeliveries = 0;
+    const successfulDeliveries = 0;
+    const failedDeliveries = 0;
     const errors: string[] = [];
 
     try {
