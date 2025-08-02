@@ -47,4 +47,149 @@ export function NotificationPanel({
         return "text-neon-green border-neon-green";
       default:
         return "text-muted-foreground border-muted-foreground";
-    }\n  };\n\n  const getSeverityStatus = (severity: string): \"active\" | \"warning\" | \"error\" => {\n    switch (severity) {\n      case \"critical\":\n      case \"high\":\n        return \"error\";\n      case \"medium\":\n        return \"warning\";\n      default:\n        return \"active\";\n    }\n  };\n\n  const getTypeIcon = (type: string) => {\n    switch (type) {\n      case \"cost_threshold\":\n        return \"💰\";\n      case \"error_rate\":\n        return \"⚠️\";\n      case \"rate_limit\":\n        return \"🚦\";\n      case \"performance\":\n        return \"⚡\";\n      case \"security\":\n        return \"🛡️\";\n      default:\n        return \"📊\";\n    }\n  };\n\n  return (\n    <Card className={cn(\"glass-card border-border/50 notification-pulse\", className)}>\n      <CardHeader>\n        <div className=\"flex items-center justify-between\">\n          <div className=\"flex items-center gap-2\">\n            <AlertTriangle className=\"h-5 w-5 text-neon-yellow\" />\n            <CardTitle className=\"neon-text\">System Alerts</CardTitle>\n          </div>\n          <Badge variant=\"secondary\" className=\"neon-glow\">\n            {notifications.filter(n => !n.isRead).length} new\n          </Badge>\n        </div>\n        <CardDescription>\n          Latest notifications and warnings from your APIs\n        </CardDescription>\n      </CardHeader>\n      \n      <CardContent>\n        <div className=\"space-y-3 max-h-96 overflow-y-auto\">\n          {notifications.map((notification) => (\n            <div\n              key={notification.id}\n              className={cn(\n                \"relative group p-3 rounded-lg border transition-all duration-300\",\n                \"hover:bg-white/5 cursor-pointer\",\n                getSeverityColor(notification.severity),\n                !notification.isRead && \"bg-white/5 border-l-4\",\n                hoveredId === notification.id && \"neon-glow\"\n              )}\n              onMouseEnter={() => setHoveredId(notification.id)}\n              onMouseLeave={() => setHoveredId(null)}\n            >\n              {/* Severity indicator */}\n              <div className=\"absolute left-0 top-0 bottom-0 w-1 bg-current opacity-50 rounded-l-lg\" />\n              \n              <div className=\"flex items-start justify-between gap-3\">\n                <div className=\"flex items-start gap-3 flex-1\">\n                  {/* Type icon and status orb */}\n                  <div className=\"flex items-center gap-2 mt-0.5\">\n                    <span className=\"text-sm\">{getTypeIcon(notification.type)}</span>\n                    <StatusOrb \n                      status={getSeverityStatus(notification.severity)} \n                      size=\"sm\" \n                    />\n                  </div>\n                  \n                  <div className=\"flex-1 space-y-1\">\n                    <p className=\"text-sm font-medium leading-relaxed\">\n                      {notification.message}\n                    </p>\n                    <div className=\"flex items-center gap-2 text-xs text-muted-foreground\">\n                      <span className=\"font-medium\">{notification.provider}</span>\n                      <span>•</span>\n                      <div className=\"flex items-center gap-1\">\n                        <Clock className=\"w-3 h-3\" />\n                        <span>{notification.time}</span>\n                      </div>\n                    </div>\n                  </div>\n                </div>\n                \n                {/* Action buttons */}\n                <div className=\"flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity\">\n                  {!notification.isRead && onMarkAsRead && (\n                    <Button\n                      size=\"sm\"\n                      variant=\"ghost\"\n                      className=\"h-6 w-6 p-0 hover:bg-white/10\"\n                      onClick={() => onMarkAsRead(notification.id)}\n                    >\n                      <Eye className=\"w-3 h-3\" />\n                    </Button>\n                  )}\n                  {onDismiss && (\n                    <Button\n                      size=\"sm\"\n                      variant=\"ghost\"\n                      className=\"h-6 w-6 p-0 hover:bg-white/10 text-neon-red\"\n                      onClick={() => onDismiss(notification.id)}\n                    >\n                      <X className=\"w-3 h-3\" />\n                    </Button>\n                  )}\n                </div>\n              </div>\n              \n              {/* Severity badge */}\n              <div className=\"mt-2 flex justify-end\">\n                <Badge \n                  variant={notification.severity === \"critical\" ? \"destructive\" : \"secondary\"}\n                  className=\"text-xs neon-glow capitalize\"\n                >\n                  {notification.severity}\n                </Badge>\n              </div>\n            </div>\n          ))}\n        </div>\n        \n        {onViewAll && (\n          <div className=\"pt-4 border-t border-border/50 mt-4\">\n            <Button \n              variant=\"outline\" \n              className=\"w-full cyber-button\"\n              onClick={onViewAll}\n            >\n              View All Alerts\n            </Button>\n          </div>\n        )}\n      </CardContent>\n    </Card>\n  );\n}"
+    }
+  };
+
+  const getSeverityStatus = (severity: string): "active" | "warning" | "error" => {
+    switch (severity) {
+      case "critical":
+      case "high":
+        return "error";
+      case "medium":
+        return "warning";
+      default:
+        return "active";
+    }
+  };
+
+  const getTypeIcon = (type: string) => {
+    switch (type) {
+      case "cost_threshold":
+        return "💰";
+      case "error_rate":
+        return "⚠️";
+      case "rate_limit":
+        return "🚦";
+      case "performance":
+        return "⚡";
+      case "security":
+        return "🛡️";
+      default:
+        return "📊";
+    }
+  };
+
+  return (
+    <Card className={cn("glass-card border-border/50 notification-pulse", className)}>
+      <CardHeader>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <AlertTriangle className="h-5 w-5 text-neon-yellow" />
+            <CardTitle className="neon-text">System Alerts</CardTitle>
+          </div>
+          <Badge variant="secondary" className="neon-glow">
+            {notifications.filter(n => !n.isRead).length} new
+          </Badge>
+        </div>
+        <CardDescription>
+          Latest notifications and warnings from your APIs
+        </CardDescription>
+      </CardHeader>
+      
+      <CardContent>
+        <div className="space-y-3 max-h-96 overflow-y-auto">
+          {notifications.map((notification) => (
+            <div
+              key={notification.id}
+              className={cn(
+                "relative group p-3 rounded-lg border transition-all duration-300",
+                "hover:bg-white/5 cursor-pointer",
+                getSeverityColor(notification.severity),
+                !notification.isRead && "bg-white/5 border-l-4",
+                hoveredId === notification.id && "neon-glow"
+              )}
+              onMouseEnter={() => setHoveredId(notification.id)}
+              onMouseLeave={() => setHoveredId(null)}
+            >
+              {/* Severity indicator */}
+              <div className="absolute left-0 top-0 bottom-0 w-1 bg-current opacity-50 rounded-l-lg" />
+              
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex items-start gap-3 flex-1">
+                  {/* Type icon and status orb */}
+                  <div className="flex items-center gap-2 mt-0.5">
+                    <span className="text-sm">{getTypeIcon(notification.type)}</span>
+                    <StatusOrb 
+                      status={getSeverityStatus(notification.severity)} 
+                      size="sm" 
+                    />
+                  </div>
+                  
+                  <div className="flex-1 space-y-1">
+                    <p className="text-sm font-medium leading-relaxed">
+                      {notification.message}
+                    </p>
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <span className="font-medium">{notification.provider}</span>
+                      <span>•</span>
+                      <div className="flex items-center gap-1">
+                        <Clock className="w-3 h-3" />
+                        <span>{notification.time}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Action buttons */}
+                <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                  {!notification.isRead && onMarkAsRead && (
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      className="h-6 w-6 p-0 hover:bg-white/10"
+                      onClick={() => onMarkAsRead(notification.id)}
+                    >
+                      <Eye className="w-3 h-3" />
+                    </Button>
+                  )}
+                  {onDismiss && (
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      className="h-6 w-6 p-0 hover:bg-white/10 text-neon-red"
+                      onClick={() => onDismiss(notification.id)}
+                    >
+                      <X className="w-3 h-3" />
+                    </Button>
+                  )}
+                </div>
+              </div>
+              
+              {/* Severity badge */}
+              <div className="mt-2 flex justify-end">
+                <Badge 
+                  variant={notification.severity === "critical" ? "destructive" : "secondary"}
+                  className="text-xs neon-glow capitalize"
+                >
+                  {notification.severity}
+                </Badge>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        {onViewAll && (
+          <div className="pt-4 border-t border-border/50 mt-4">
+            <Button 
+              variant="outline" 
+              className="w-full cyber-button"
+              onClick={onViewAll}
+            >
+              View All Alerts
+            </Button>
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
