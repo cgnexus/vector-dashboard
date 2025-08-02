@@ -15,6 +15,13 @@
       "when": 1754114233077,
       "tag": "0001_oval_cobalt_man",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1754114868674,
+      "tag": "0002_handy_the_phantom",
+      "breakpoints": true
     }
   ]
 }
