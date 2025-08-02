@@ -45,7 +45,7 @@ export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
     const queryParams = {
       providerId: searchParams.get('providerId') || undefined,
-      period: searchParams.get('period') as any,
+      period: searchParams.get('period') as 'monthly' | 'weekly' | 'daily' | null,
       isActive: searchParams.get('isActive') ? searchParams.get('isActive') === 'true' : undefined,
       isOverBudget: searchParams.get('isOverBudget') ? searchParams.get('isOverBudget') === 'true' : undefined,
       page: parseInt(searchParams.get('page') || '1'),

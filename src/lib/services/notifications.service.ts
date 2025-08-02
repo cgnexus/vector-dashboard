@@ -50,13 +50,13 @@ export interface CreateChannelData {
 export interface NotificationContext {
   alert: Alert;
   channel: NotificationChannel;
-  variables: Record<string, any>;
+  variables: Record<string, unknown>;
 }
 
 export interface DeliveryResult {
   success: boolean;
   error?: string;
-  response?: any;
+  response?: Record<string, unknown>;
   shouldRetry?: boolean;
 }
 

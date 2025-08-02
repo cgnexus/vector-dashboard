@@ -44,7 +44,7 @@ export async function GET(request: NextRequest) {
 
     const searchParams = request.nextUrl.searchParams;
     const queryParams = {
-      status: searchParams.get('status') as any,
+      status: searchParams.get('status') as 'active' | 'inactive' | 'error' | null,
       search: searchParams.get('search') || undefined,
       page: parseInt(searchParams.get('page') || '1'),
       limit: parseInt(searchParams.get('limit') || '10'),

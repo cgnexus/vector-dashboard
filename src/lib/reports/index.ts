@@ -13,8 +13,8 @@ export interface ReportSection {
   id: string;
   title: string;
   type: 'summary' | 'chart' | 'table' | 'insights';
-  data?: any;
-  config?: any;
+  data?: Record<string, unknown>;
+  config?: Record<string, unknown>;
 }
 
 export interface GeneratedReport {

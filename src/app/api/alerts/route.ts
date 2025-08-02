@@ -54,8 +54,8 @@ export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
     const queryParams = {
       providerId: searchParams.get('providerId') || undefined,
-      type: searchParams.get('type') as any,
-      severity: searchParams.get('severity') as any,
+      type: searchParams.get('type') as 'cost' | 'error_rate' | 'response_time' | 'usage' | null,
+      severity: searchParams.get('severity') as 'low' | 'medium' | 'high' | 'critical' | null,
       isRead: searchParams.get('isRead') ? searchParams.get('isRead') === 'true' : undefined,
       isResolved: searchParams.get('isResolved') ? searchParams.get('isResolved') === 'true' : undefined,
       startDate: searchParams.get('startDate') || undefined,
