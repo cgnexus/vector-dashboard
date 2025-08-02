@@ -100,7 +100,7 @@ export default function OpenRouterPage() {
             <Shield className="mx-auto h-16 w-16 text-muted-foreground mb-4" />
             <h3 className="text-lg font-semibold mb-2">Enhanced Monitoring in Development</h3>
             <p className="text-muted-foreground mb-6">
-              We're building comprehensive OpenRouter monitoring features including model performance analysis, 
+              We&apos;re building comprehensive OpenRouter monitoring features including model performance analysis, 
               cost optimization, and detailed request analytics.
             </p>
             <div className="flex flex-wrap gap-2 justify-center">

@@ -179,7 +179,7 @@ export async function GET(request: NextRequest) {
 /**
  * Format anomaly values for display
  */
-function formatAnomalyValue(anomaly: any): string {
+function formatAnomalyValue(anomaly: { type: string; value: number }): string {
     switch (anomaly.type) {
       case 'cost_spike':
         return AIUtils.formatCost(anomaly.value);

@@ -100,7 +100,7 @@ export default function ExaPage() {
             <Search className="mx-auto h-16 w-16 text-muted-foreground mb-4" />
             <h3 className="text-lg font-semibold mb-2">Search Intelligence Dashboard</h3>
             <p className="text-muted-foreground mb-6">
-              We're building comprehensive Exa API monitoring including search quality metrics, 
+              We&apos;re building comprehensive Exa API monitoring including search quality metrics, 
               query optimization suggestions, and detailed performance analytics.
             </p>
             <div className="flex flex-wrap gap-2 justify-center">

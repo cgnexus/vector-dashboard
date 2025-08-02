@@ -100,7 +100,7 @@ export default function ApolloPage() {
             <Database className="mx-auto h-16 w-16 text-muted-foreground mb-4" />
             <h3 className="text-lg font-semibold mb-2">GraphQL Intelligence Dashboard</h3>
             <p className="text-muted-foreground mb-6">
-              We're building comprehensive Apollo monitoring including query performance analysis, 
+              We&apos;re building comprehensive Apollo monitoring including query performance analysis, 
               schema optimization suggestions, and detailed resolver metrics.
             </p>
             <div className="flex flex-wrap gap-2 justify-center">

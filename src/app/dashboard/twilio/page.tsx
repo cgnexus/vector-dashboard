@@ -100,7 +100,7 @@ export default function TwilioPage() {
             <Phone className="mx-auto h-16 w-16 text-muted-foreground mb-4" />
             <h3 className="text-lg font-semibold mb-2">Communication Intelligence</h3>
             <p className="text-muted-foreground mb-6">
-              We're building comprehensive Twilio monitoring including delivery analytics, 
+              We&apos;re building comprehensive Twilio monitoring including delivery analytics, 
               cost optimization for SMS/Voice, and detailed communication metrics.
             </p>
             <div className="flex flex-wrap gap-2 justify-center">
