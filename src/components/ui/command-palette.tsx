@@ -194,7 +194,7 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
                 </h3>
               </div>
               <div className="space-y-1">
-                {commands.map((command, index) => {
+                {commands.map((command, _index) => {
                   const globalIndex = filteredCommands.indexOf(command);
                   const isSelected = globalIndex === selectedIndex;
                   const Icon = command.icon;
@@ -247,7 +247,7 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
               </div>
               <p className="text-muted-foreground">No commands found</p>
               <p className="text-sm text-muted-foreground/70 mt-1">
-                Try searching for "dashboard", "api", or "settings"
+                Try searching for &quot;dashboard&quot;, &quot;api&quot;, or &quot;settings&quot;
               </p>
             </div>
           )}

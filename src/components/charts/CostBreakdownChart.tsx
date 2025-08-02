@@ -5,8 +5,7 @@ import {
   PieChart,
   Pie,
   Cell,
-  Tooltip,
-  Legend
+  Tooltip
 } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -54,7 +53,7 @@ export function CostBreakdownChart({
     color: item.color || colors[index % colors.length]
   }));
 
-  const CustomTooltip = ({ active, payload }: any) => {
+  const CustomTooltip = ({ active, payload }: { active?: boolean; payload?: Array<{ payload: any }> }) => {
     if (active && payload && payload.length) {
       const data = payload[0].payload;
       
@@ -97,7 +96,14 @@ export function CostBreakdownChart({
     return null;
   };
 
-  const CustomLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }: any) => {
+  const CustomLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }: { 
+    cx: number; 
+    cy: number; 
+    midAngle: number; 
+    innerRadius: number; 
+    outerRadius: number; 
+    percent: number; 
+  }) => {
     if (percent < 0.05) return null; // Don't show labels for slices smaller than 5%
     
     const RADIAN = Math.PI / 180;

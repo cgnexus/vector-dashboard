@@ -4,7 +4,6 @@ import { useState } from "react";
 
 export default function SignInPage() {
   const [isLaoding, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
   const handleSignIn = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -19,10 +18,10 @@ export default function SignInPage() {
         callbackURL: "/dashboard", // A URL to redirect to after the user verifies their email (optional)
       },
       {
-        onRequest: (ctx) => {
+        onRequest: () => {
           setIsLoading(true);
         },
-        onSuccess: (ctx) => {
+        onSuccess: () => {
           setIsLoading(false);
           //redirect to the dashboard or sign in page
         },

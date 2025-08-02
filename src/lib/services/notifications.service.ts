@@ -4,13 +4,12 @@ import {
   alertDeliveries, 
   userNotificationPreferences,
   notificationTemplates,
-  alerts,
   type NotificationChannel,
   type AlertDelivery,
   type Alert
 } from '@/db/schema';
-import { and, eq, desc, count, gte, lte, or } from 'drizzle-orm';
-import { withTransaction, type DbTransaction } from '@/lib/db-utils';
+import { and, eq, desc, gte, lte, or } from 'drizzle-orm';
+import { withTransaction } from '@/lib/db-utils';
 import { generateId } from '@/lib/api-utils';
 import crypto from 'crypto';
 
@@ -272,7 +271,7 @@ export class NotificationsService {
         );
     } else {
       // Use default: all active channels for critical/high, email/in_app for medium/low
-      let typeFilter = severity === 'critical' || severity === 'high' 
+      const typeFilter = severity === 'critical' || severity === 'high' 
         ? undefined // all types
         : or(
             eq(notificationChannels.type, 'email'),
@@ -294,7 +293,7 @@ export class NotificationsService {
   }
 
   // Build notification variables
-  private static async buildNotificationVariables(alert: Alert): Promise<Record<string, any>> {
+  private static async buildNotificationVariables(alert: Alert): Promise<Record<string, unknown>> {
     const dashboardUrl = process.env.NEXT_PUBLIC_BETTER_AUTH_URL || 'http://localhost:3000';
     
     return {

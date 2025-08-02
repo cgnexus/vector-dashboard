@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { AnimatedMetric } from "@/components/ui/animated-metric";
 import { StatusOrb } from "@/components/ui/status-orb";
-import { NeonChart, PerformanceChart } from "@/components/ui/neon-chart";
+import { PerformanceChart } from "@/components/ui/neon-chart";
 import { HoloSpinner } from "@/components/ui/holo-loader";
 import { 
   Activity, 

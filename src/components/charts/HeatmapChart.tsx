@@ -28,10 +28,10 @@ export function HeatmapChart({
   height = 300,
   className
 }: HeatmapChartProps) {
-  const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  const days = useMemo(() => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], []);
   const hours = Array.from({ length: 24 }, (_, i) => i);
 
-  const { processedData, maxValue, minValue } = useMemo(() => {
+  const { processedData, maxValue } = useMemo(() => {
     const values = data.map(d => d[metric] || 0);
     const max = Math.max(...values);
     const min = Math.min(...values);

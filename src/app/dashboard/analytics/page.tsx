@@ -5,14 +5,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { 
-  BarChart3,
   TrendingUp,
   TrendingDown,
-  Calendar,
-  Download,
   RefreshCw,
-  Activity,
-  Clock,
   DollarSign,
   AlertTriangle
 } from "lucide-react";
@@ -51,9 +46,6 @@ export default function AnalyticsPage() {
     error 
   } = useAnalytics(dateRange);
 
-  const requestsTimeSeriesData = useTimeSeriesData(timeSeriesData, 'requests');
-  const costsTimeSeriesData = useTimeSeriesData(timeSeriesData, 'cost');
-  const responseTimeSeriesData = useTimeSeriesData(timeSeriesData, 'responseTime');
   
   const apiComparisonData = useComparisonData(apiMetrics, 'requests');
   const responseTimeComparisonData = useComparisonData(apiMetrics, 'avgResponseTime');
@@ -88,7 +80,7 @@ export default function AnalyticsPage() {
   );
 
   // Generate cost breakdown data
-  const costBreakdownData = apiMetrics?.map((api, index) => ({
+  const costBreakdownData = apiMetrics?.map((api) => ({
     name: api.name,
     value: api.cost,
     percentage: (api.cost / apiMetrics.reduce((sum, a) => sum + a.cost, 0)) * 100,

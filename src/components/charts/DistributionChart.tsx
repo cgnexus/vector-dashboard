@@ -47,7 +47,7 @@ export function DistributionChart({
   const totalCount = data.reduce((sum, item) => sum + item.count, 0);
   
   const stats = {
-    mean: data.reduce((sum, item, index) => {
+    mean: data.reduce((sum, item) => {
       const midpoint = (item.min + item.max) / 2;
       return sum + (midpoint * item.count);
     }, 0) / totalCount,
@@ -77,7 +77,7 @@ export function DistributionChart({
     })()
   };
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  const CustomTooltip = ({ active, payload, label }: { active?: boolean; payload?: Array<{ payload: any }>; label?: string }) => {
     if (active && payload && payload.length) {
       const data = payload[0].payload;
       

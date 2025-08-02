@@ -16,7 +16,6 @@ import {
   Clock, 
   Mail, 
   Calendar,
-  Settings,
   Plus,
   Trash2,
   Edit,
@@ -46,7 +45,7 @@ interface ScheduledReportModalProps {
 export function ScheduledReportModal({ className }: ScheduledReportModalProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
-  const [editingReport, setEditingReport] = useState<string | null>(null);
+  const [_editingReport, setEditingReport] = useState<string | null>(null);
   
   const [reports, setReports] = useState<ScheduledReport[]>([
     {
@@ -188,7 +187,7 @@ export function ScheduledReportModal({ className }: ScheduledReportModalProps) {
     const now = new Date();
     const [hours, minutes] = time.split(':').map(Number);
     
-    let next = new Date(now);
+    const next = new Date(now);
     next.setHours(hours, minutes, 0, 0);
     
     if (next <= now) {
@@ -378,7 +377,7 @@ export function ScheduledReportModal({ className }: ScheduledReportModalProps) {
                     <label className="text-sm font-medium">Frequency</label>
                     <select
                       value={newReport.frequency}
-                      onChange={(e) => setNewReport(prev => ({ ...prev, frequency: e.target.value as any }))}
+                      onChange={(e) => setNewReport(prev => ({ ...prev, frequency: e.target.value as 'daily' | 'weekly' | 'monthly' }))}
                       className="w-full mt-1 px-3 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     >
                       {frequencies.map(freq => (
@@ -413,7 +412,7 @@ export function ScheduledReportModal({ className }: ScheduledReportModalProps) {
                               ? 'border-primary bg-primary/5' 
                               : 'border-border hover:border-primary/50'
                           }`}
-                          onClick={() => setNewReport(prev => ({ ...prev, template: template.value as any }))}
+                          onClick={() => setNewReport(prev => ({ ...prev, template: template.value as 'summary' | 'detailed' | 'executive' }))}
                         >
                           <CardContent className="p-3 text-center">
                             <Icon className="h-6 w-6 mx-auto mb-2" />
@@ -437,7 +436,7 @@ export function ScheduledReportModal({ className }: ScheduledReportModalProps) {
                             ? 'border-primary bg-primary/5' 
                             : 'border-border hover:border-primary/50'
                         }`}
-                        onClick={() => setNewReport(prev => ({ ...prev, format: format.value as any }))}
+                        onClick={() => setNewReport(prev => ({ ...prev, format: format.value as 'pdf' | 'csv' | 'json' }))}
                       >
                         <CardContent className="p-2 text-center">
                           <div className="font-medium text-sm">{format.label}</div>

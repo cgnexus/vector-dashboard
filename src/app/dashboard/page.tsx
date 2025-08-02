@@ -1,7 +1,6 @@
 'use client';
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { AnimatedMetric } from "@/components/ui/animated-metric";
 import { ApiCard } from "@/components/ui/api-card";
@@ -16,8 +15,7 @@ import {
   formatErrorRate,
   formatTimeAgo,
   getProviderClass,
-  getTrendDirection,
-  getErrorMessage
+  getTrendDirection
 } from "@/lib/data-utils";
 import { 
   Activity, 
@@ -25,8 +23,6 @@ import {
   TrendingUp, 
   AlertTriangle,
   Zap,
-  Shield,
-  BarChart3,
   RefreshCw
 } from "lucide-react";
 
@@ -40,20 +36,15 @@ export default function DashboardPage() {
     autoRefreshOnError: true
   });
   
-  // System health monitoring
-  const systemHealth = useSystemHealth();
-  
   // Destructure for easier access
   const { 
     providers, 
     metrics, 
     realtime, 
     alerts, 
-    alertStats, 
-    insights,
+    alertStats,
     isLoading, 
-    hasError, 
-    isEmpty,
+    hasError,
     refreshAll 
   } = dashboard;
 

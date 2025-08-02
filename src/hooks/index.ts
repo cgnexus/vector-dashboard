@@ -10,8 +10,6 @@ export { mutate } from 'swr';
 
 // Helper function to invalidate all dashboard data
 export function invalidateAllData() {
-  const { mutate } = require('swr');
-  
   // Invalidate all dashboard-related SWR keys
   const keys = [
     '/api/providers',
@@ -28,8 +26,6 @@ export function invalidateAllData() {
 
 // Real-time dashboard refresh hook
 export function useDashboardRefresh(interval: number = 30000) {
-  const { useEffect } = require('react');
-  
   useEffect(() => {
     const intervalId = setInterval(() => {
       invalidateAllData();

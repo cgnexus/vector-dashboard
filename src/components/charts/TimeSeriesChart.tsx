@@ -9,7 +9,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   Area,
   AreaChart
 } from 'recharts';
@@ -76,14 +75,14 @@ export function TimeSeriesChart({
     };
   }, [data, showTrend]);
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  const CustomTooltip = ({ active, payload, label }: { active?: boolean; payload?: Array<{ dataKey: string; value: number; color: string }>; label?: string }) => {
     if (active && payload && payload.length) {
       const dataPoint = processedData.find(p => p.formattedDate === label);
       
       return (
         <div className="bg-background/95 backdrop-blur-sm border border-border rounded-lg p-3 shadow-lg">
           <p className="text-sm font-medium mb-2">{dataPoint?.fullDate}</p>
-          {payload.map((entry: any, index: number) => {
+          {payload.map((entry, index: number) => {
             const metric = metrics.find(m => m.key === entry.dataKey);
             return (
               <div key={index} className="flex items-center gap-2 text-sm">

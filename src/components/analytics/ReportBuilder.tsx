@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import {
   Dialog,
@@ -14,7 +14,6 @@ import {
 } from '@/components/ui/dialog';
 import { 
   FileText, 
-  Plus, 
   Settings, 
   Download,
   BarChart3,
@@ -22,7 +21,6 @@ import {
   TrendingUp,
   Activity,
   Clock,
-  DollarSign,
   AlertTriangle
 } from 'lucide-react';
 import { DateRangePicker, DateRange } from './DateRangePicker';
@@ -34,9 +32,9 @@ interface ReportSection {
   type: 'summary' | 'timeseries' | 'comparison' | 'distribution' | 'heatmap' | 'errors';
   title: string;
   description: string;
-  icon: any;
+  icon: React.ComponentType<{ className?: string }>;
   enabled: boolean;
-  config?: any;
+  config?: Record<string, unknown>;
 }
 
 interface ReportBuilderProps {
@@ -130,19 +128,6 @@ export function ReportBuilder({ data, className }: ReportBuilderProps) {
     const enabledSections = sections.filter(s => s.enabled);
     
     const report = generateReport('custom', data);
-    const customReport = {
-      ...report,
-      name: reportName,
-      dateRange,
-      sections: enabledSections.map(section => ({
-        type: section.type,
-        title: section.title,
-        description: section.description,
-        data: getDataForSection(section.type)
-      })),
-      insights: generateInsights(enabledSections),
-      recommendations: generateRecommendations(enabledSections)
-    };
 
     try {
       await exportAnalyticsData(data, {
