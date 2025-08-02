@@ -46,6 +46,20 @@ export async function POST(request: Request) {
       );
     }
 
+    // Check if userId exists
+    const userExists = await db
+      .select({ id: users.id })
+      .from(users)
+      .where(eq(users.id, userId))
+      .limit(1);
+
+    if (userExists.length === 0) {
+      return NextResponse.json(
+        { error: 'Provided userId does not exist' },
+        { status: 400 }
+      );
+    }
+
     const newProject = await db
       .insert(projects)
       .values({

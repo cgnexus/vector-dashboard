@@ -28,6 +28,7 @@ export const vectors = pgTable('vectors', {
   embedding: jsonb('embedding').notNull(), // In production, consider using pgvector extension
   metadata: jsonb('metadata'),
   createdAt: timestamp('created_at').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow(),
 });
 
 // Define relations
