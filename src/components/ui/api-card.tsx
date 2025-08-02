@@ -107,7 +107,7 @@ export function ApiCard({
       ref={(el) => {
         cardRef.current = el;
         if (intersectionRef.current !== el) {
-          (intersectionRef as any).current = el;
+          (intersectionRef as { current: HTMLElement | null }).current = el;
         }
       }}
       className={cn(

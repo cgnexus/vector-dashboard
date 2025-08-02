@@ -29,7 +29,7 @@ import { ReportBuilder } from '@/components/analytics/ReportBuilder';
 import { ScheduledReportModal } from '@/components/analytics/ScheduledReportModal';
 
 // Import hooks
-import { useAnalytics, useTimeSeriesData, useComparisonData } from '@/hooks/useAnalytics';
+import { useAnalytics, useComparisonData } from '@/hooks/useAnalytics';
 
 
 export default function AnalyticsPage() {

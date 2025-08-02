@@ -65,7 +65,7 @@ export function ComparisonChart({
       ((item.value - item.previousValue) / item.previousValue) * 100 : 0
   }));
 
-  const CustomTooltip = ({ active, payload, label }: { active?: boolean; payload?: Array<{ payload: any; value: number }>; label?: string }) => {
+  const CustomTooltip = ({ active, payload, label }: { active?: boolean; payload?: Array<{ payload: ComparisonDataPoint & { change: number; color: string }; value: number }>; label?: string }) => {
     if (active && payload && payload.length) {
       const data = payload[0].payload;
       

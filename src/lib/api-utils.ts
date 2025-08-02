@@ -2,13 +2,13 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 
 // Standard API response format
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T = unknown> {
   success: boolean;
   data?: T;
   error?: {
     code: string;
     message: string;
-    details?: any;
+    details?: Record<string, unknown>;
   };
   pagination?: {
     page: number;
@@ -32,7 +32,7 @@ export function createErrorResponse(
   code: string,
   message: string,
   status: number = 400,
-  details?: any
+  details?: Record<string, unknown>
 ): NextResponse<ApiResponse> {
   return NextResponse.json(
     {

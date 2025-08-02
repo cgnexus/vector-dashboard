@@ -7,7 +7,7 @@ import { ApiCard } from "@/components/ui/api-card";
 import { NotificationPanel } from "@/components/ui/notification-panel";
 import { HoloLoader } from "@/components/ui/holo-loader";
 import { EmptyState } from "@/components/ui/empty-state";
-import { useDashboard, useSystemHealth } from "@/hooks/useDashboard";
+import { useDashboard } from "@/hooks/useDashboard";
 import {
   formatNumber,
   formatCurrency,

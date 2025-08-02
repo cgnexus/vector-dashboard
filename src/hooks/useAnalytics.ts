@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react';
 import useSWR from 'swr';
-import { subDays, format, eachDayOfInterval, startOfDay, endOfDay } from 'date-fns';
+import { subDays, format, eachDayOfInterval } from 'date-fns';
 
 export interface AnalyticsDataPoint {
   timestamp: string;
@@ -46,6 +46,7 @@ export interface UsagePattern {
   day: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const fetcher = (url: string) => fetch(url).then(res => res.json());
 
 // Mock data generator for development

@@ -45,7 +45,7 @@ interface ScheduledReportModalProps {
 export function ScheduledReportModal({ className }: ScheduledReportModalProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
-  const [_editingReport, setEditingReport] = useState<string | null>(null);
+  const [, setEditingReport] = useState<string | null>(null);
   
   const [reports, setReports] = useState<ScheduledReport[]>([
     {

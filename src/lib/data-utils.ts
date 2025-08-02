@@ -93,7 +93,7 @@ export function getErrorMessage(error: Error | null): string {
 }
 
 // Data validation utilities
-export function isValidMetricsData(data: any): boolean {
+export function isValidMetricsData(data: Record<string, unknown>): boolean {
   return data && 
          typeof data.totalRequests === 'number' &&
          typeof data.totalCost === 'number' &&
@@ -101,7 +101,7 @@ export function isValidMetricsData(data: any): boolean {
          typeof data.errorRate === 'number';
 }
 
-export function isValidProviderData(data: any): boolean {
+export function isValidProviderData(data: unknown[]): boolean {
   return data && 
          Array.isArray(data) &&
          data.every(provider => 
@@ -113,7 +113,7 @@ export function isValidProviderData(data: any): boolean {
          );
 }
 
-export function isValidAlertsData(data: any): boolean {
+export function isValidAlertsData(data: unknown[]): boolean {
   return data && 
          Array.isArray(data) &&
          data.every(alert => 

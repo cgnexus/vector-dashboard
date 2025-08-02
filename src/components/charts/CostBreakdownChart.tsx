@@ -53,7 +53,7 @@ export function CostBreakdownChart({
     color: item.color || colors[index % colors.length]
   }));
 
-  const CustomTooltip = ({ active, payload }: { active?: boolean; payload?: Array<{ payload: any }> }) => {
+  const CustomTooltip = ({ active, payload }: { active?: boolean; payload?: Array<{ payload: CostBreakdownData & { color: string } }> }) => {
     if (active && payload && payload.length) {
       const data = payload[0].payload;
       

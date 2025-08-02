@@ -37,7 +37,6 @@ interface DistributionChartProps {
 export function DistributionChart({
   data,
   title,
-  metric,
   unit = 'ms',
   type = 'area',
   height = 300,
@@ -77,7 +76,7 @@ export function DistributionChart({
     })()
   };
 
-  const CustomTooltip = ({ active, payload, label }: { active?: boolean; payload?: Array<{ payload: any }>; label?: string }) => {
+  const CustomTooltip = ({ active, payload, label }: { active?: boolean; payload?: Array<{ payload: DistributionData }>; label?: string }) => {
     if (active && payload && payload.length) {
       const data = payload[0].payload;
       

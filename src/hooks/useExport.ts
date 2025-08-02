@@ -14,7 +14,7 @@ export interface ExportOptions {
 }
 
 export function useExport() {
-  const exportToCsv = useCallback((data: any[], filename: string) => {
+  const exportToCsv = useCallback((data: Record<string, unknown>[], filename: string) => {
     if (!data.length) return;
 
     const headers = Object.keys(data[0]);
@@ -34,13 +34,13 @@ export function useExport() {
 
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     downloadBlob(blob, `${filename}.csv`);
-  }, []);
+  }, [downloadBlob]);
 
-  const exportToJson = useCallback((data: any, filename: string) => {
+  const exportToJson = useCallback((data: Record<string, unknown>, filename: string) => {
     const jsonContent = JSON.stringify(data, null, 2);
     const blob = new Blob([jsonContent], { type: 'application/json;charset=utf-8;' });
     downloadBlob(blob, `${filename}.json`);
-  }, []);
+  }, [downloadBlob]);
 
   const exportToPdf = useCallback(async (elementId: string, filename: string) => {
     try {

@@ -32,7 +32,7 @@ export function NeonChart({
   className
 }: NeonChartProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [, setIsAnimating] = useState(false);
   
   const getColorValue = () => {
     switch (color) {
@@ -181,7 +181,7 @@ export function NeonChart({
     // Reset shadow
     ctx.shadowBlur = 0;
 
-  }, [data, color, showGrid, type]);
+  }, [data, color, showGrid, type, getColorValue]);
 
   return (
     <Card className={cn("glass-card border-primary/20", className)}>

@@ -10,7 +10,7 @@ interface Alert {
   providerName?: string;
   isRead: boolean;
   isResolved: boolean;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
   createdAt: string;
   updatedAt: string;
 }

@@ -138,7 +138,7 @@ export function AnimatedMetric({
       ref={(el) => {
         cardRef.current = el;
         if (intersectionRef.current !== el) {
-          (intersectionRef as any).current = el;
+          (intersectionRef as { current: HTMLElement | null }).current = el;
         }
       }}
       className={`glass-card border-primary/20 hover:border-primary/40 transition-all duration-500 group cursor-pointer

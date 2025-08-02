@@ -1,9 +1,9 @@
 import { useState, useCallback } from 'react';
 
-interface LoadingState {
+interface LoadingState<T> {
   isLoading: boolean;
   error: Error | null;
-  data: any;
+  data: T | null;
 }
 
 interface UseLoadingStateReturn<T> {
@@ -17,8 +17,8 @@ interface UseLoadingStateReturn<T> {
   execute: (asyncFn: () => Promise<T>) => Promise<T | null>;
 }
 
-export function useLoadingState<T = any>(initialData: T | null = null): UseLoadingStateReturn<T> {
-  const [state, setState] = useState<LoadingState>({
+export function useLoadingState<T = unknown>(initialData: T | null = null): UseLoadingStateReturn<T> {
+  const [state, setState] = useState<LoadingState<T>>({
     isLoading: false,
     error: null,
     data: initialData
@@ -69,10 +69,10 @@ export function useLoadingState<T = any>(initialData: T | null = null): UseLoadi
 }
 
 // Utility hook for managing multiple loading states
-export function useMultipleLoadingStates<T extends Record<string, any>>(
+export function useMultipleLoadingStates<T extends Record<string, unknown>>(
   keys: (keyof T)[]
-): Record<keyof T, UseLoadingStateReturn<any>> {
-  const states = {} as Record<keyof T, UseLoadingStateReturn<any>>;
+): Record<keyof T, UseLoadingStateReturn<unknown>> {
+  const states = {} as Record<keyof T, UseLoadingStateReturn<unknown>>;
   
   for (const key of keys) {
     // eslint-disable-next-line react-hooks/rules-of-hooks

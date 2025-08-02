@@ -155,7 +155,7 @@ export function useDashboard(options: DashboardOptions = {}) {
 
       return () => clearTimeout(timer);
     }
-  }, [hasError, autoRefreshOnError]);
+  }, [hasError, autoRefreshOnError, refreshAll]);
 
   // Log data updates in development
   useEffect(() => {

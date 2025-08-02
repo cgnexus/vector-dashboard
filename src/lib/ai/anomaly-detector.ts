@@ -28,7 +28,7 @@ export interface Anomaly {
   confidence: number; // 0-1
   providerId?: string;
   endpoint?: string;
-  metadata: Record<string, any>;
+  metadata: Record<string, unknown>;
   recommendations: string[];
 }
 
@@ -47,10 +47,11 @@ interface Baseline {
 /**
  * Time series data point for analysis
  */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface TimeSeriesPoint {
   timestamp: Date;
   value: number;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 /**
@@ -439,7 +440,7 @@ export class AnomalyDetector {
     const llmMetrics = metrics.filter(m => 
       m.tokens && 
       typeof m.tokens === 'object' && 
-      (m.tokens as any).total > 0
+      (m.tokens as Record<string, unknown>).total as number > 0
     );
 
     if (llmMetrics.length < this.config.minimumDataPoints) return anomalies;
@@ -585,11 +586,11 @@ export class AnomalyDetector {
   /**
    * Group data by day
    */
-  private groupByDay<T>(
-    data: Array<{ timestamp: Date; [key: string]: any }>,
-    valueExtractor: (item: any) => number
+  private groupByDay<_T>(
+    data: Array<{ timestamp: Date; [key: string]: unknown }>,
+    valueExtractor: (item: Record<string, unknown>) => number
   ): Array<{ timestamp: Date; value: number }> {
-    const groups = new Map<string, any[]>();
+    const groups = new Map<string, Array<Record<string, unknown>>>();
     
     data.forEach(item => {
       const day = new Date(item.timestamp);
@@ -650,7 +651,7 @@ export class AnomalyDetector {
   private calculateSeverity(
     value: number, 
     baseline: number, 
-    threshold: number
+    _threshold: number
   ): 'low' | 'medium' | 'high' | 'critical' {
     const ratio = value / baseline;
     

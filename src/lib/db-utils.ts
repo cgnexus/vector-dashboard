@@ -5,9 +5,9 @@ import { ExtractTablesWithRelations } from 'drizzle-orm';
 
 // Transaction type
 export type DbTransaction = PostgresJsTransaction<
-  any,
-  ExtractTablesWithRelations<any>,
-  any
+  Record<string, never>,
+  ExtractTablesWithRelations<Record<string, never>>,
+  Record<string, never>
 >;
 
 // Execute function within a transaction

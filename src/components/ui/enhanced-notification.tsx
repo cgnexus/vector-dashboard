@@ -71,6 +71,13 @@ export function EnhancedNotification({
     return () => clearTimeout(timer);
   }, []);
   
+  const handleClose = () => {
+    setIsExiting(true);
+    setTimeout(() => {
+      onClose?.(id);
+    }, 300);
+  };
+
   // Progress bar and auto-dismiss
   useEffect(() => {
     if (duration <= 0 || isHovered) return;
@@ -87,7 +94,7 @@ export function EnhancedNotification({
     }, 100);
     
     return () => clearInterval(interval);
-  }, [duration, isHovered]);
+  }, [duration, isHovered, handleClose]);
   
   // Celebration effects
   useEffect(() => {
@@ -101,13 +108,6 @@ export function EnhancedNotification({
       return () => clearTimeout(timer);
     }
   }, [type]);
-  
-  const handleClose = () => {
-    setIsExiting(true);
-    setTimeout(() => {
-      onClose?.(id);
-    }, 300);
-  };
   
   const handleClick = () => {
     if (!interactive) return;
