@@ -176,10 +176,10 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  /**
-   * Format anomaly values for display
-   */
-  static formatAnomalyValue(anomaly: any): string {
+/**
+ * Format anomaly values for display
+ */
+function formatAnomalyValue(anomaly: any): string {
     switch (anomaly.type) {
       case 'cost_spike':
         return AIUtils.formatCost(anomaly.value);
