@@ -8,6 +8,13 @@
       "when": 1754107992633,
       "tag": "0000_hot_viper",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1754114233077,
+      "tag": "0001_oval_cobalt_man",
+      "breakpoints": true
     }
   ]
 }
