@@ -1,6 +1,12 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
@@ -10,7 +16,9 @@ export default function Home() {
       <div className="mx-auto max-w-4xl space-y-8">
         {/* Header */}
         <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold tracking-tight">Vector Dashboard</h1>
+          <h1 className="text-4xl font-bold tracking-tight">
+            Vector Dashboard
+          </h1>
           <p className="text-xl text-muted-foreground">
             Built with Next.js 15, TypeScript, Tailwind CSS, and shadcn/ui
           </p>
@@ -34,7 +42,8 @@ export default function Home() {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
-                Next.js 15 with App Router, TypeScript for type safety, and Turbopack for lightning-fast development.
+                Next.js 15 with App Router, TypeScript for type safety, and
+                Turbopack for lightning-fast development.
               </p>
             </CardContent>
           </Card>
@@ -48,7 +57,8 @@ export default function Home() {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
-                Pre-built components that are accessible, customizable, and follow design best practices.
+                Pre-built components that are accessible, customizable, and
+                follow design best practices.
               </p>
             </CardContent>
           </Card>
@@ -62,7 +72,8 @@ export default function Home() {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
-                Fast installs, efficient disk usage, and strict dependency resolution for better security.
+                Fast installs, efficient disk usage, and strict dependency
+                resolution for better security.
               </p>
             </CardContent>
           </Card>
@@ -72,9 +83,7 @@ export default function Home() {
         <Card className="max-w-md mx-auto">
           <CardHeader>
             <CardTitle>Quick Demo</CardTitle>
-            <CardDescription>
-              Try out the shadcn/ui components
-            </CardDescription>
+            <CardDescription>Try out the shadcn/ui components</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">
@@ -91,7 +100,13 @@ export default function Home() {
 
         {/* Footer */}
         <div className="text-center text-sm text-muted-foreground">
-          <p>Ready to build your next project? Edit <code className="bg-muted px-1 py-0.5 rounded">src/app/page.tsx</code> to get started.</p>
+          <p>
+            Ready to build your next project? Edit{" "}
+            <code className="bg-muted px-1 py-0.5 rounded">
+              src/app/page.tsx
+            </code>{" "}
+            to get started.
+          </p>
         </div>
       </div>
     </div>

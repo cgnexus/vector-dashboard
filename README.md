@@ -93,6 +93,7 @@ Press `Ctrl+Shift+P` and search for "Tasks: Run Task" to access:
 #### Available shadcn/ui Components
 
 Currently installed components:
+
 - `button` - Interactive button component with variants
 - `card` - Flexible content container with header/content sections
 - `input` - Form input component with proper styling

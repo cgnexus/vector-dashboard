@@ -41,7 +41,7 @@ This is a Next.js 15 project with TypeScript, Tailwind CSS, shadcn/ui, and App R
 
 - Keep reusable components in the `src/components` directory
 - Place shadcn/ui components in `src/components/ui` (auto-generated)
-- Use the `src/app` directory for routing and page components  
+- Use the `src/app` directory for routing and page components
 - Store utilities in `src/lib` directory
 - Use configured path aliases: `@/components`, `@/lib`, `@/hooks`
 - Implement proper error boundaries and loading states
