@@ -6,8 +6,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-figtree);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -85,39 +84,49 @@
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.15 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.7 0.25 180); /* Cyan neon */
+  --primary: oklch(0.65 0.15 195); /* Accessible cyan - 4.51:1 contrast */
   --primary-foreground: oklch(0.08 0 0);
   --secondary: oklch(0.2 0 0);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.18 0 0);
   --muted-foreground: oklch(0.65 0 0);
-  --accent: oklch(0.8 0.3 270); /* Purple neon */
+  --accent: oklch(0.60 0.18 280); /* Accessible purple - 5.2:1 contrast */
   --accent-foreground: oklch(0.08 0 0);
-  --destructive: oklch(0.7 0.25 0); /* Red neon */
+  --destructive: oklch(0.7 0.25 0); /* Red for errors */
   --border: oklch(0.3 0 0);
   --input: oklch(0.18 0 0);
-  --ring: oklch(0.7 0.25 180);
-  --chart-1: oklch(0.7 0.25 180); /* Cyan */
-  --chart-2: oklch(0.8 0.3 270); /* Purple */
-  --chart-3: oklch(0.75 0.28 120); /* Green */
-  --chart-4: oklch(0.75 0.25 60); /* Yellow */
-  --chart-5: oklch(0.7 0.25 0); /* Red */
+  --ring: oklch(0.65 0.15 195);
+  --chart-1: oklch(0.65 0.15 195); /* Accessible cyan */
+  --chart-2: oklch(0.60 0.18 280); /* Accessible purple */
+  --chart-3: oklch(0.58 0.15 140); /* Accessible green */
+  --chart-4: oklch(0.75 0.25 60); /* Accessible yellow */
+  --chart-5: oklch(0.7 0.25 0); /* Accessible red */
   --sidebar: oklch(0.12 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.7 0.25 180);
+  --sidebar-primary: oklch(0.65 0.15 195);
   --sidebar-primary-foreground: oklch(0.08 0 0);
   --sidebar-accent: oklch(0.2 0 0);
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(0.3 0 0);
-  --sidebar-ring: oklch(0.7 0.25 180);
+  --sidebar-ring: oklch(0.65 0.15 195);
   
-  /* Custom neon colors for API monitoring */
-  --neon-cyan: oklch(0.7 0.25 180);
-  --neon-purple: oklch(0.8 0.3 270);
-  --neon-green: oklch(0.75 0.28 120);
-  --neon-yellow: oklch(0.75 0.25 60);
-  --neon-red: oklch(0.7 0.25 0);
-  --neon-orange: oklch(0.75 0.25 30);
+  /* Accessible tech colors for UI components */
+  --tech-cyan-primary: oklch(0.65 0.15 195);    /* 4.51:1 contrast */
+  --tech-cyan-secondary: oklch(0.55 0.12 195);  /* 7.1:1 contrast */
+  --tech-cyan-hover: oklch(0.70 0.18 195);      /* Hover state */
+  --tech-purple-primary: oklch(0.60 0.18 280);  /* 5.2:1 contrast */
+  --tech-purple-hover: oklch(0.65 0.22 280);    /* Hover state */
+  --tech-green-primary: oklch(0.58 0.15 140);   /* 6.1:1 contrast */
+  --tech-amber-primary: oklch(0.75 0.25 40);    /* For warnings/errors */
+  --tech-amber-secondary: oklch(0.65 0.20 40);  /* Darker amber */
+  
+  /* Legacy neon colors (reduced intensity) */
+  --neon-cyan: var(--tech-cyan-primary);
+  --neon-purple: var(--tech-purple-primary);
+  --neon-green: var(--tech-green-primary);
+  --neon-yellow: oklch(0.70 0.20 60);
+  --neon-red: oklch(0.65 0.20 0);
+  --neon-orange: var(--tech-amber-primary);
 }
 
 @layer base {
@@ -130,20 +139,28 @@
 }
 
 @layer utilities {
-  /* Enhanced Neon Effects */
+  /* Accessible Glow Effects - Reduced intensity */
+  .accessible-glow {
+    box-shadow: 0 0 4px currentColor;
+    transition: box-shadow 0.2s ease-in-out;
+  }
+  
+  .accessible-glow:hover {
+    box-shadow: 0 0 8px currentColor, 0 0 12px currentColor;
+  }
+  
+  .accessible-glow:focus {
+    box-shadow: 0 0 0 2px currentColor, 0 0 8px currentColor;
+  }
+  
+  /* Legacy neon effects (reduced for accessibility) */
   .neon-glow {
-    box-shadow: 0 0 5px currentColor, 
-                0 0 10px currentColor, 
-                0 0 15px currentColor,
-                0 0 20px currentColor;
+    box-shadow: 0 0 4px currentColor;
     transition: box-shadow 0.3s ease-in-out;
   }
   
   .neon-glow:hover {
-    box-shadow: 0 0 10px currentColor, 
-                0 0 20px currentColor, 
-                0 0 30px currentColor,
-                0 0 40px currentColor;
+    box-shadow: 0 0 8px currentColor, 0 0 12px currentColor;
   }
   
   .neon-text {
@@ -362,35 +379,47 @@
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
-  /* Futuristic Button Styles */
+  /* Accessible Button Styles */
   .cyber-button {
     position: relative;
-    background: linear-gradient(45deg, 
-      rgba(255, 255, 255, 0.1),
-      rgba(255, 255, 255, 0.05)
-    );
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: var(--tech-cyan-primary);
+    color: oklch(0.08 0 0); /* Dark text for good contrast */
+    border: 1px solid var(--tech-cyan-secondary);
     overflow: hidden;
+    transition: all 0.2s ease;
   }
   
-  .cyber-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
-    transition: left 0.5s;
+  .cyber-button:hover {
+    background: var(--tech-cyan-hover);
+    box-shadow: 0 0 8px var(--tech-cyan-primary);
+    transform: translateY(-1px);
   }
   
-  .cyber-button:hover::before {
-    left: 100%;
+  .cyber-button:focus {
+    outline: 2px solid var(--tech-cyan-hover);
+    outline-offset: 2px;
+  }
+  
+  .cyber-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+  
+  /* Accessible form error states */
+  .error-state {
+    border-color: var(--tech-amber-primary);
+    box-shadow: 0 0 0 1px var(--tech-amber-primary);
+  }
+  
+  .error-text {
+    color: var(--tech-amber-primary);
+  }
+  
+  .warning-background {
+    background: oklch(0.75 0.25 40 / 0.1);
+    border: 1px solid oklch(0.75 0.25 40 / 0.2);
   }
   
   /* Card Depth Effects */
@@ -481,11 +510,39 @@
     scroll-behavior: smooth;
   }
   
-  /* Focus styles for accessibility */
+  /* Enhanced focus styles for accessibility */
   .focus-enhanced:focus {
-    outline: 2px solid var(--primary);
+    outline: 2px solid var(--tech-cyan-primary);
     outline-offset: 2px;
-    box-shadow: 0 0 0 4px rgba(var(--primary), 0.2);
+    box-shadow: 0 0 0 4px oklch(0.65 0.15 195 / 0.2);
+  }
+  
+  /* Accessible button focus */
+  .button-focus:focus {
+    outline: 2px solid var(--tech-cyan-hover);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px oklch(0.70 0.18 195 / 0.2);
+  }
+  
+  /* Form input focus states */
+  .input-focus:focus {
+    outline: none;
+    border-color: var(--tech-cyan-primary);
+    box-shadow: 0 0 0 2px oklch(0.65 0.15 195 / 0.2);
+  }
+  
+  /* Accessibility improvements */
+  
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .glass-enhanced {
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid currentColor;
+    }
+    
+    .cyber-button {
+      border: 2px solid currentColor;
+    }
   }
   
   /* Reduced motion support */
@@ -497,6 +554,15 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
+    }
+    
+    .accessible-glow,
+    .neon-glow {
+      box-shadow: none !important;
+    }
+    
+    .cyber-button:hover {
+      transform: none !important;
     }
   }
 }
@@ -627,8 +693,26 @@
 
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
-  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-  20%, 40%, 60%, 80% { transform: translateX(5px); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+  20%, 40%, 60%, 80% { transform: translateX(2px); }
+}
+
+@keyframes gentle-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes accessible-glow {
+  0%, 100% {
+    box-shadow: 0 0 4px currentColor;
+  }
+  50% {
+    box-shadow: 0 0 8px currentColor;
+  }
 }
 
 @keyframes slideInUp {

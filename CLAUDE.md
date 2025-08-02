@@ -104,3 +104,7 @@ DATABASE_URL=postgresql://user:password@localhost:5432/database
   - Provides type-safe schema validation
   - Integrate with TypeScript for runtime and compile-time checks
   - Useful for form inputs, API request/response validation
+
+## Naming Conventions
+
+- When creating schema files, create them in a `[name].schema.ts` file
