@@ -345,7 +345,7 @@ export class NotificationsService {
   private static async deliverEmail(
     channel: NotificationChannel,
     alert: Alert,
-    variables: Record<string, any>
+    variables: Record<string, unknown>
   ): Promise<DeliveryResult> {
     const config = channel.config as { email: { address: string } };
     const template = await this.getTemplate('email', alert.type, alert.severity);
@@ -368,7 +368,7 @@ export class NotificationsService {
   private static async deliverWebhook(
     channel: NotificationChannel,
     alert: Alert,
-    variables: Record<string, any>
+    variables: Record<string, unknown>
   ): Promise<DeliveryResult> {
     const config = channel.config as { webhook: { url: string; secret?: string; headers?: Record<string, string>; method?: string } };
     const template = await this.getTemplate('webhook', alert.type, alert.severity);
@@ -411,7 +411,7 @@ export class NotificationsService {
   private static async deliverSlack(
     channel: NotificationChannel,
     alert: Alert,
-    variables: Record<string, any>
+    variables: Record<string, unknown>
   ): Promise<DeliveryResult> {
     const config = channel.config as { slack: { webhookUrl: string; channel?: string; username?: string } };
     const template = await this.getTemplate('slack', alert.type, alert.severity);
@@ -451,7 +451,7 @@ export class NotificationsService {
   private static async deliverDiscord(
     channel: NotificationChannel,
     alert: Alert,
-    variables: Record<string, any>
+    variables: Record<string, unknown>
   ): Promise<DeliveryResult> {
     const config = channel.config as { discord: { webhookUrl: string; username?: string; avatarUrl?: string } };
     const template = await this.getTemplate('discord', alert.type, alert.severity);
@@ -493,7 +493,7 @@ export class NotificationsService {
   private static async deliverTeams(
     channel: NotificationChannel,
     alert: Alert,
-    variables: Record<string, any>
+    variables: Record<string, unknown>
   ): Promise<DeliveryResult> {
     const config = channel.config as { teams: { webhookUrl: string } };
     const template = await this.getTemplate('teams', alert.type, alert.severity);
@@ -566,8 +566,8 @@ export class NotificationsService {
   // Get default template
   private static getDefaultTemplate(
     channelType: string,
-    alertType: string,
-    severity: string
+    _alertType: string,
+    _severity: string
   ): { subject?: string; body: string } {
     const defaultTemplates: Record<string, { subject?: string; body: string }> = {
       email: {
@@ -609,7 +609,7 @@ View in dashboard: {{alertUrl}}`
   }
 
   // Render template with variables
-  private static renderTemplate(template: string, variables: Record<string, any>): string {
+  private static renderTemplate(template: string, variables: Record<string, unknown>): string {
     let rendered = template;
     
     for (const [key, value] of Object.entries(variables)) {
@@ -727,7 +727,7 @@ View in dashboard: {{alertUrl}}`
         .set({
           failureCount: db.raw('failure_count + 1'),
           updatedAt: new Date()
-        } as any)
+        })
         .where(eq(notificationChannels.id, channelId));
     }
   }
@@ -756,7 +756,7 @@ View in dashboard: {{alertUrl}}`
         nextRetryAt: nextRetry,
         attempt: db.raw('attempt + 1'),
         updatedAt: new Date()
-      } as any)
+      })
       .where(eq(alertDeliveries.id, deliveryId));
   }
 
@@ -767,7 +767,7 @@ View in dashboard: {{alertUrl}}`
   }
 
   // Verify channel (for email verification)
-  static async verifyChannel(channelId: string, token: string): Promise<boolean> {
+  static async verifyChannel(_channelId: string, _token: string): Promise<boolean> {
     // Implementation for verifying channels
     // This would validate the verification token and update the channel
     return true;
