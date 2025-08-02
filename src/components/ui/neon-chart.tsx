@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
@@ -32,9 +32,8 @@ export function NeonChart({
   className
 }: NeonChartProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [, setIsAnimating] = useState(false);
   
-  const getColorValue = () => {
+  const getColorValue = useCallback(() => {
     switch (color) {
       case "cyan":
         return "var(--neon-cyan)";
@@ -49,7 +48,7 @@ export function NeonChart({
       default:
         return "var(--neon-cyan)";
     }
-  };
+  }, [color]);
 
   useEffect(() => {
     const canvas = canvasRef.current;

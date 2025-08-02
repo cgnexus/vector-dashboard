@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useCallback } from 'react';
 import { useProviders } from './useProviders';
 import { useAggregatedMetrics, useRealtimeMetrics } from './useMetrics';
 import { useAlerts, useAlertsStats } from './useAlerts';
@@ -116,7 +116,7 @@ export function useDashboard(options: DashboardOptions = {}) {
   }, [providers.providers, alerts.alerts, metrics.metrics]);
 
   // Actions
-  const refreshAll = async () => {
+  const refreshAll = useCallback(async () => {
     await Promise.all([
       providers.mutate(),
       metrics.mutate(),
@@ -126,7 +126,7 @@ export function useDashboard(options: DashboardOptions = {}) {
       insights.mutate(),
       quickInsights.mutate()
     ]);
-  };
+  }, [providers, metrics, realtime, alerts, alertStats, insights, quickInsights]);
 
   const refreshProviders = async () => {
     await providers.mutate();

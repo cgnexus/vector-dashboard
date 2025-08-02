@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { X, CheckCircle, AlertCircle, AlertTriangle, Info, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { createSuccessParticles, createFloatingText } from "@/lib/animations";
@@ -71,12 +71,12 @@ export function EnhancedNotification({
     return () => clearTimeout(timer);
   }, []);
   
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setIsExiting(true);
     setTimeout(() => {
       onClose?.(id);
     }, 300);
-  };
+  }, [id, onClose]);
 
   // Progress bar and auto-dismiss
   useEffect(() => {

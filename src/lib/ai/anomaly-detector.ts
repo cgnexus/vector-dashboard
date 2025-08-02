@@ -586,6 +586,7 @@ export class AnomalyDetector {
   /**
    * Group data by day
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   private groupByDay<_T>(
     data: Array<{ timestamp: Date; [key: string]: unknown }>,
     valueExtractor: (item: Record<string, unknown>) => number
@@ -651,6 +652,7 @@ export class AnomalyDetector {
   private calculateSeverity(
     value: number, 
     baseline: number, 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     _threshold: number
   ): 'low' | 'medium' | 'high' | 'critical' {
     const ratio = value / baseline;

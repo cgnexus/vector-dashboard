@@ -337,6 +337,7 @@ export class CostCalculator {
     });
 
     // Model downgrade recommendations
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     providerCosts.forEach((data, _providerId) => {
       if (data.models.has('gpt-4') && data.cost > currentCost * 0.3) {
         recommendations.push({

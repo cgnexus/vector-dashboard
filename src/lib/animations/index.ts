@@ -181,15 +181,16 @@ export const useCountAnimation = (target: number, duration = 1000) => {
 
 // Konami code hook
 export const useKonamiCode = (callback: () => void) => {
-  const konamiCode = [
-    'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
-    'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
-    'KeyB', 'KeyA'
-  ];
   
   const [, setSequence] = React.useState<string[]>([]);
   
   useEffect(() => {
+    const konamiCode = [
+      'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
+      'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
+      'KeyB', 'KeyA'
+    ];
+    
     const handleKeyPress = (event: KeyboardEvent) => {
       setSequence(prev => {
         const newSequence = [...prev, event.code].slice(-konamiCode.length);
@@ -209,7 +210,7 @@ export const useKonamiCode = (callback: () => void) => {
     return () => {
       document.removeEventListener('keydown', handleKeyPress);
     };
-  }, [callback, konamiCode]);
+  }, [callback]);
 };
 
 // Random encouraging messages

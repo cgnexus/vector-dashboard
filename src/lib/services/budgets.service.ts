@@ -411,8 +411,8 @@ export class BudgetsService {
     const now = new Date();
     
     // Calculate how far we are into the period
-    const periodDuration = periodEnd.getTime() - periodStart.getTime();
-    const elapsedTime = now.getTime() - periodStart.getTime();
+    // const periodDuration = periodEnd.getTime() - periodStart.getTime();
+    // const elapsedTime = now.getTime() - periodStart.getTime();
     const remainingTime = periodEnd.getTime() - now.getTime();
     // const progressPercentage = Math.min(100, (elapsedTime / periodDuration) * 100);
 

@@ -194,7 +194,7 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
                 </h3>
               </div>
               <div className="space-y-1">
-                {commands.map((command, _index) => {
+                {commands.map((command) => {
                   const globalIndex = filteredCommands.indexOf(command);
                   const isSelected = globalIndex === selectedIndex;
                   const Icon = command.icon;

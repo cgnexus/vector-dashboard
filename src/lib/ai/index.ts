@@ -94,6 +94,7 @@ export class AIOrchestrator {
    */
   static async generateDashboardInsights(
     metrics: ApiMetric[],
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     _userId: string
   ): Promise<DashboardInsights> {
     if (metrics.length === 0) {

@@ -566,7 +566,9 @@ export class NotificationsService {
   // Get default template
   private static getDefaultTemplate(
     channelType: string,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     _alertType: string,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     _severity: string
   ): { subject?: string; body: string } {
     const defaultTemplates: Record<string, { subject?: string; body: string }> = {
@@ -767,6 +769,7 @@ View in dashboard: {{alertUrl}}`
   }
 
   // Verify channel (for email verification)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   static async verifyChannel(_channelId: string, _token: string): Promise<boolean> {
     // Implementation for verifying channels
     // This would validate the verification token and update the channel

@@ -521,6 +521,7 @@ export class AlertRulesService {
   }
 
   // Generate alert title
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   private static generateAlertTitle(rule: AlertRule, _currentValue: number): string {
     const typeLabels = {
       error_rate: 'High Error Rate',
