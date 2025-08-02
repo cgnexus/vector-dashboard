@@ -10,26 +10,27 @@ A modern Next.js 15 dashboard application built with TypeScript, Tailwind CSS, a
 - 📱 **Responsive Design** with mobile-first approach
 - 🔧 **ESLint** for code quality and consistency
 - 🚀 **Optimized** for performance and SEO
+- 📦 **pnpm** for fast, disk space efficient package management
 
 ## Getting Started
 
 ### Prerequisites
 
 - Node.js 18+
-- npm, yarn, pnpm, or bun
+- pnpm (recommended), npm, yarn, or bun
 
 ### Development
 
 1. Install dependencies:
 
 ```bash
-npm install
+pnpm install
 ```
 
 2. Start the development server:
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 3. Open [http://localhost:3000](http://localhost:3000) in your browser
@@ -39,8 +40,8 @@ The development server uses Turbopack for faster builds and hot reloading. The p
 ### Building for Production
 
 ```bash
-npm run build
-npm start
+pnpm run build
+pnpm start
 ```
 
 ## Project Structure
@@ -67,11 +68,37 @@ This project includes VS Code configurations for:
 
 Press `Ctrl+Shift+P` and search for "Tasks: Run Task" to access:
 
-- **Next.js Development Server** - Start development with hot reload
-- **Build Next.js Application** - Create production build
-- **Start Production Server** - Run production server
-- **Lint Code** - Run ESLint checks
-- **Install Dependencies** - Install npm packages
+- **Next.js Development Server** - Start development with hot reload (uses pnpm)
+- **Build Next.js Application** - Create production build (uses pnpm)
+- **Start Production Server** - Run production server (uses pnpm)
+- **Lint Code** - Run ESLint checks (uses pnpm)
+- **Install Dependencies** - Install packages with pnpm
+
+### pnpm Commands
+
+- `pnpm install` - Install dependencies
+- `pnpm run dev` - Start development server
+- `pnpm run build` - Build for production
+- `pnpm start` - Start production server
+- `pnpm run lint` - Run ESLint
+- `pnpm add <package>` - Add a new dependency
+- `pnpm add -D <package>` - Add a development dependency
+
+## Package Management
+
+This project uses **pnpm** for package management, which provides:
+
+- **Faster installs** - Up to 2x faster than npm
+- **Disk space efficiency** - Saves disk space through content-addressable storage
+- **Strict dependency resolution** - Prevents phantom dependencies
+- **Better monorepo support** - Built-in workspace support
+
+### Why pnpm?
+
+- **Performance**: Faster installation and less disk usage
+- **Security**: Strict dependency resolution prevents supply chain attacks
+- **Compatibility**: Drop-in replacement for npm with the same API
+- **Modern**: Built for modern JavaScript development workflows
 
 ## Learn More
 
