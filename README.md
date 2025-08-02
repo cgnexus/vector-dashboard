@@ -1,12 +1,13 @@
 # Vector Dashboard
 
-A modern Next.js 15 dashboard application built with TypeScript, Tailwind CSS, and the App Router.
+A modern Next.js 15 dashboard application built with TypeScript, Tailwind CSS, shadcn/ui, and the App Router.
 
 ## Features
 
 - ⚡ **Next.js 15** with App Router and Turbopack for fast development
 - 🔷 **TypeScript** for type safety and better developer experience
 - 🎨 **Tailwind CSS 4** for modern, responsive styling
+- 🧩 **shadcn/ui** for beautiful, accessible UI components
 - 📱 **Responsive Design** with mobile-first approach
 - 🔧 **ESLint** for code quality and consistency
 - 🚀 **Optimized** for performance and SEO
@@ -83,6 +84,42 @@ Press `Ctrl+Shift+P` and search for "Tasks: Run Task" to access:
 - `pnpm run lint` - Run ESLint
 - `pnpm add <package>` - Add a new dependency
 - `pnpm add -D <package>` - Add a development dependency
+
+### shadcn/ui Commands
+
+- `pnpm dlx shadcn@latest add <component>` - Add new shadcn/ui components
+- `pnpm dlx shadcn@latest add button card input` - Add multiple components at once
+
+#### Available shadcn/ui Components
+
+Currently installed components:
+- `button` - Interactive button component with variants
+- `card` - Flexible content container with header/content sections
+- `input` - Form input component with proper styling
+- `label` - Accessible form label component
+- `dialog` - Modal/popup dialog component
+- `dropdown-menu` - Accessible dropdown menu component
+- `badge` - Small status indicator component
+
+Use these components by importing from `@/components/ui`:
+
+```tsx
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+export function MyComponent() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Hello World</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <Button>Click me</Button>
+      </CardContent>
+    </Card>
+  );
+}
+```
 
 ## Package Management
 
